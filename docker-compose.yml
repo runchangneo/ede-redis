@@ -1,0 +1,49 @@
+version: "3"
+services:
+  redis7:
+    build:
+      context: .
+      args:
+        REDIS_VERSION: ${REDIS7_VERSION}
+    container_name: redis7
+    ports:
+      - ${REDIS7_PORT}:6379
+    volumes:
+      - ${REDIS7_DIR}/etc/redis.conf:/etc/redis.conf:rw
+      - ${REDIS7_DIR}/data:/data:rw
+    restart: "no"
+    networks:
+      - dev  
+
+  redis6:
+    build:
+      context: .
+      args:
+        REDIS_VERSION: ${REDIS6_VERSION}
+    container_name: redis6
+    ports:
+      - ${REDIS6_PORT}:6379
+    volumes:
+      - ${REDIS6_DIR}/etc/redis.conf:/etc/redis.conf:rw
+      - ${REDIS6_DIR}/data:/data:rw  
+    restart: "no"
+    networks:
+      - dev  
+
+  redis5:
+    build:
+      context: .
+      args:
+        REDIS_VERSION: ${REDIS5_VERSION}
+    container_name: redis5
+    ports:
+      - ${REDIS5_PORT}:6379
+    volumes:
+      - ${REDIS5_DIR}/etc/redis.conf:/etc/redis.conf:rw
+      - ${REDIS5_DIR}/data:/data:rw        
+    restart: "no"
+    networks:
+      - dev  
+networks:
+  dev:
+    external: true   
