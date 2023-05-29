@@ -11,7 +11,7 @@ services:
     volumes:
       - ${REDIS7_DIR}/etc/redis.conf:/etc/redis.conf:rw
       - ${REDIS7_DIR}/data:/data:rw
-    restart: "no"
+    restart: ${REDIS7_RESTART_POLICY}
     networks:
       - dev  
 
@@ -26,7 +26,7 @@ services:
     volumes:
       - ${REDIS6_DIR}/etc/redis.conf:/etc/redis.conf:rw
       - ${REDIS6_DIR}/data:/data:rw  
-    restart: "no"
+    restart: ${REDIS6_RESTART_POLICY}
     networks:
       - dev  
 
@@ -41,7 +41,7 @@ services:
     volumes:
       - ${REDIS5_DIR}/etc/redis.conf:/etc/redis.conf:rw
       - ${REDIS5_DIR}/data:/data:rw        
-    restart: "no"
+    restart: ${REDIS5_RESTART_POLICY}
     networks:
       - dev  
 networks:
